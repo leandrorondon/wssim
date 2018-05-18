@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title>wssim</title>
+</head>
+
+<body>
+  <h1>wssim</h1>
+  <p>wssim is a simple generic webservice simulator.</p>
+
+  <h2>Introduction</h2>
+
+  <p>You can use wssim to simulate responses from a webservice when developing client-side application.</p>
+
+  <h2>Directories</h2>
+
+  <h3>web</h3>
+
+  <p>Put your static html/css/js files here. You can use wssim as a simple html webserver to test your scripts against the simulated
+    webservice.
+  </p>
+
+  <h3>responses</h3>
+
+  <p>responses' subdirectories (GET, POST, PUT, DELETE, HEAD) contain files (*.json) which content will be used to response
+    a request to API functions.</p>
+
+  <p>For example, if an application makes a GET request to http://localhost:8099/api/status, wssim will try to read file "responses/GET/status.json"
+    and return file content in the response body.</p>
+
+  <h2>Instructions</h2>
+
+  <h3>Usage</h3>
+
+  <p>wssim [OPTIONS]</p>
+
+  <p>wssim listens in port 8080 by default. It can be changed using -p option.</p>
+
+  <h4>Options</h4>
+  <ul>
+    <li>-p, --port set wssim to listen in a custom port</li>
+    <li>-h, --help print the help</li>
+  </ul>
+
+  <h3>Status code</h3>
+
+  <p>The return code for any request can be set in the "statuscode.txt" file. If the file don't exists or couldn't be parsed,
+    wssim returns 200 (OK).</p>
+
+  <h3>Content Type</h3>
+
+  <p>The response's Content-Type matches the first Accept header value from request. If no Accept is specified ("*/*/"), wssim
+    sets Content-Type to "application/json".</p>
+
+  <h3>Response body</h3>
+
+  <p>Response body is read from files in responses directory.</p>
+
+  <p>For example, if an application makes a GET request to http://localhost:8099/api/status, wssim will try to read file "responses/GET/status.json"
+    and will return file content in the response body.</p>
+
+  <p>wssim doesn't care about request's parameters or data. It neither checks if Content-Type value matches with response body
+    content. It simply replies the request with content from corresponding file.</p>
+
+
+</body>
+
+</html>
